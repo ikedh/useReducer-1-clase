@@ -1,23 +1,15 @@
 
-import { useState } from 'react'
+import { useReducer, useState } from 'react'
 import './App.css'
+import reducer from './utils/reducer'
+
+
 
 function App() {
- 
-  const [contador,setContador] = useState (0)
-  const [subtitulo, setSubtitulo] = useState ("Ingresar Texto")
 
-  const incrementar = () =>{
-    setContador(contador + 1)
-  }
+  
 
-  const descrementar = () =>{
-    setContador(contador - 1)
-  }
 
-  const handleSubtitulo = e =>{
-    setSubtitulo(e.target.value)
-  }
 
   return (
     <>
@@ -25,21 +17,21 @@ function App() {
       <input
         type='text'
         onChange={handleSubtitulo}
-        value={subtitulo}
+        value={state.subtitulo}
       />
 
-      <h3>{subtitulo}</h3>
-      <hr/>
+      <h3>{state.subtitulo}</h3>
+      <hr />
 
       <button
-        onClick={incrementar}
+        onClick={incremento}
       >Incrementar</button>
 
       <button
-        onClick={descrementar}
+        onClick={decremento}
       >Decrementar</button>
       <h4>
-        {contador}
+        {state.contador}
       </h4>
     </>
   )
